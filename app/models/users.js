@@ -17,9 +17,5 @@ module.exports = (sequelize,DataTypes) =>{
       name : DataTypes.STRING
   })
 
-  User.associate = (models) =>{
-      User.belongsTo(models.Task, {foreignKey : 'TaskId'})
-  }
-
   return User
 }

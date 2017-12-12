@@ -5,9 +5,7 @@ const UsersHelper = require('../helpers/UsersHelper')
 
 
 
-exports.loginUser = (req,res) =>{
-    res.render('home')
-}
+
 
 exports.registerUser = (req,res) =>{
     models.User.create({
@@ -20,20 +18,33 @@ exports.registerUser = (req,res) =>{
 }
 
 
-exports.loginPost = (req,res) =>{
-    models.User.findOne({
-        where:{
-            email:req.body.email,
-            password:req.body.password
-        }
-    }).then(()=>{
-        res.render('user')
+
+exports.addTodo = (req,res) =>{
+    if(req.body.task === ''){
+        res.redirect('/user')
+        return
+    }
+    models.Task.create({
+        task: req.body.task,
+        UserId: req.session.user.id
+    }).then( ()=>{
+    
+        res.redirect('/user')
     })
 }
 
 
-exports.userLogout = (req,res) =>{
-    req.session.destroy(() => {
-        res.redirect('/')
-    })
+
+exports.notFound = (req,res) =>{
+    res.send('404 PageNot Found')
+}
+
+
+
+exports.deleteItem = (req,res) =>{
+    models.Task.destroy({
+        where:{ id :req.params.id, UserId: req.session.user.id}
+    }).then(() =>{
+        res.redirect('/user')
+    } )
 }

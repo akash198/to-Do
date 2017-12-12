@@ -1,5 +1,5 @@
 body {
-    padding-top: 90px;
+		padding-top: 90px;
 }
 .panel-login {
     border-color: #ccc;
@@ -171,7 +171,9 @@ input {
 }
 
 ol {
-  padding-left: 20px;
+	padding-left: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 ol li {
@@ -189,4 +191,21 @@ ol li:nth-child(even) {
 
 li:hover {
   cursor: pointer;
+}
+
+
+
+
+.task{
+	display: inline-flex;
+}
+
+#task{
+	display: inline-block;
+  background-color: #fc999b;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 2px;
+  padding: 3px 10px;
 }

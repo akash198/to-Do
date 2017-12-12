@@ -8,5 +8,10 @@ module.exports = (sequelize,DataTypes) =>{
 
     })
 
+   
+    Task.associate = (models) => {
+        Task.belongsTo(models.User, { foreignKey: 'UserId' })
+      }
+    
     return Task
 }
